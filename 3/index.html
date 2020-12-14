@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test if two rectangles intersect</title>
+</head>
+<body>
+
+  <script>
+    function intersects(a, b){
+      let p1 = (a[0] >= b[0] && a[0] <= b[2] || a[2] >= b[0] && a[2] <= b[2]);
+      let p2 = (a[1] >= b[1] && a[1] <= b[3] || a[3] >= b[1] && a[2] <= b[3]);
+     return (p1 && p2);
+    }
+    /*
+      A = (3, 5; 11, 11)
+      B = (7, 2; 13, 7)
+      C = (11, 11; 15, 13)
+      intersects(A, B) => true
+      intersects(A, C) => true
+      intersects(B, C) => false
+    */
+    var a = [3, 5, 11, 11];
+    var b = [7, 2, 13, 7];
+    var c = [11, 11, 15, 13];
+    console.log('intersects(A, B) =>', intersects(a, b));
+    console.log('intersects(A, C) =>', intersects(a, c));
+    console.log('intersects(B, C) =>', intersects(b, c));
+  </script>
+</body>
+</html>

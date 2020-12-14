@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compute area of intersection between two rectangles</title>
+</head>
+
+<body>
+  <script>
+    function intersects(a, b) {
+      let p1 = (a[0][1] >= b[0][0] && a[0][0] <= b[1][0] || a[1][0] >= b[0][0] && a[1][0] <= b[1][0]);
+      let p2 = (a[0][1] >= b[0][1] && a[0][1] <= b[1][1] || a[1][1] >= b[0][1] && a[1][0] <= b[1][1]);
+      return (p1 && p2);
+    }
+
+
+    function areaOfIntersection(a, b) {
+      if(intersects(a,b)){
+        let ax = a[1][0] - b[0][0] + 1;
+        let ay = (a[1][1] > b[1][1]) ? b[1][1] - a[0][1] + 1 : a[1][1] - b[0][1] + 1;
+        console.log(ax, ay);
+        return Math.abs(ax * ay);
+      }
+      return 0;
+    }
+
+    var a = [
+      [3, 5],
+      [11, 11]
+    ];
+    var b = [
+      [7, 2],
+      [13, 7]
+    ];
+    var c = [
+      [11, 11],
+      [15, 13]
+    ];
+
+    console.log('areaOfIntersection(A, B) =>', areaOfIntersection(a, b));
+    console.log('areaOfIntersection(A, C) =>', areaOfIntersection(a, c));
+  </script>
+</body>
+
+</html>
